@@ -87,16 +87,5 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  primary: &primary_production
-    <<: *default
-    database: marketplace_api_production
-    username: marketplace_api
-    password: <%= ENV["MARKETPLACE_API_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: marketplace_api_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: marketplace_api_production_queue
-    migrations_paths: db/queue_migrate
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
